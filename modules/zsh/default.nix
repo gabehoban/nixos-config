@@ -1,0 +1,58 @@
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.zsh;
+in {
+  options.modules.zsh = { enable = mkEnableOption "zsh"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.zsh
+    ];
+    programs.zsh = {
+      enable = true;
+      dotDir = ".config/zsh";
+
+      enableCompletion = true;
+      enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
+
+      # .zshrc
+      initExtra = ''
+        PROMPT="%F{blue}%m %~%b "$'\n'"%(?.%F{green}%Bλ%b |.%F{red}?) %f"
+        export DIRENV_LOG_FORMAT="";
+        edir() { tar -cz $1 | age -p > $1.tar.gz.age && rm -rf $1 &>/dev/null && echo "$1 encrypted" }
+        ddir() { age -d $1 | tar -xz && rm -rf $1 &>/dev/null && echo "$1 decrypted" }
+      '';
+
+      # Tweak settings for history
+      history = {
+        save = 1000;
+        size = 1000;
+        path = "$HOME/.cache/zsh_history";
+      };
+
+      # Set some aliases
+      shellAliases = {
+        c = "clear";
+        mkdir = "mkdir -vp";
+        rm = "rm -rifv";
+        mv = "mv -iv";
+        cp = "cp -riv";
+        cat = "bat --paging=never --style=plain";
+        ls = "exa -a --icons";
+        tree = "exa --tree --icons";
+        nd = "nix develop -c $SHELL";
+        rebuild = "doas nixos-rebuild switch --flake $NIXOS_CONFIG_DIR --fast; notify-send 'Rebuild complete\!'";
+      };
+
+      # Source all plugins, nix-style
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "zsh-users/zsh-syntax-highlighting"; }
+        ];
+      };
+    };
+  };
+}
