@@ -10,6 +10,7 @@
     firefox.enable = true;
     alacritty.enable = true;
     vscode.enable = true;
+    obs-studio.enable = true;
 
     # cli
     zsh.enable = true;

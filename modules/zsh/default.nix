@@ -8,6 +8,29 @@ in {
     home.packages = [
       pkgs.zsh
     ];
+    programs.starship = {
+      enable = true;
+      settings = {
+        add_newline = false;
+        format = lib.concatStrings [
+          "$username"
+          "$hostname"
+          "$directory"
+          "$git_branch"
+          "$git_commit"
+          "$git_state"
+          "$git_status"
+          "$package"
+          "$haskell"
+          "$python"
+          "$rust"
+          "$nix_shell"
+          "$line_break"
+          "$jobs"
+          "$character"
+        ];
+      };
+    };
     programs.zsh = {
       enable = true;
       dotDir = ".config/zsh";
@@ -15,14 +38,6 @@ in {
       enableCompletion = true;
       enableAutosuggestions = true;
       enableSyntaxHighlighting = true;
-
-      # .zshrc
-      initExtra = ''
-        PROMPT="%F{blue}%m %~%b "$'\n'"%(?.%F{green}%Bλ%b |.%F{red}?) %f"
-        export DIRENV_LOG_FORMAT="";
-        edir() { tar -cz $1 | age -p > $1.tar.gz.age && rm -rf $1 &>/dev/null && echo "$1 encrypted" }
-        ddir() { age -d $1 | tar -xz && rm -rf $1 &>/dev/null && echo "$1 decrypted" }
-      '';
 
       # Tweak settings for history
       history = {

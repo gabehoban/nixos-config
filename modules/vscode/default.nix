@@ -35,12 +35,13 @@ in {
       ];
       userSettings = {
         "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
-        "editor.fontSize" = 16;
+        "editor.fontSize" = 14;
         "workbench.colorTheme" = "Atom One Dark";
         "workbench.productIconTheme" = "icons-carbon";
         "workbench.iconTheme" = "material-icon-theme";
         "editor.tabSize" = 2;
         "editor.formatOnSave" = true;
+        "window.zoomLevel" = 1;
       };
     };
   };

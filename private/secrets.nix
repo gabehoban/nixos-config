@@ -4,5 +4,6 @@ let
 in
 {
   "github-token.age".publicKeys = [ gabehoban ];
+  "homelab.age".publicKeys = [ gabehoban ];
   "password.age".publicKeys = [ gabehoban ];
 }

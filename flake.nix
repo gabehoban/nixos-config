@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
+    #impermanence.url = "github:nix-community/impermanence";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -28,6 +29,7 @@
         pkgs.lib.nixosSystem {
           system = system;
           modules = [
+            #impermanence.nixosModules.impermanence
             {
               networking = {
                 hostName = hostname;
@@ -36,6 +38,7 @@
             }
             (./. + "/hosts/${hostname}/hardware-configuration.nix")
             ./modules/system/configuration.nix
+            ./homelab
             home-manager.nixosModules.home-manager
             agenix.nixosModules.default
             {

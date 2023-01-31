@@ -40,12 +40,17 @@ in {
       };
       "org/gnome/shell/extensions/blur-my-shell/applications" = {
         enable-all = true;
+        blacklist = [ "Team Fortress 2 - OpenGL" "hl2_linux" ];
       };
       "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
         blur = true;
         customize = true;
         override-background = true;
         style-dash-to-dock = 2;
+      };
+      "org/gnome/settings-daemon/plugins/power" = {
+        sleep-inactive-ac-timeout = 0;
+        sleep-inactive-battery-timeout = 0;
       };
     };
   };

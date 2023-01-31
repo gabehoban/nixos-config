@@ -17,6 +17,12 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var" =
+    {
+      device = "zroot/var";
+      fsType = "zfs";
+    };
+
   fileSystems."/home" =
     {
       device = "zroot/home";
@@ -29,21 +35,33 @@
       fsType = "vfat";
     };
 
-  fileSystems."/var" =
-    {
-      device = "zroot/var";
-      fsType = "zfs";
-    };
-
   fileSystems."/var/keys" =
     {
       device = "/dev/disk/by-uuid/C671-35BA";
       fsType = "vfat";
     };
 
+  fileSystems."/nas/docker" =
+    {
+      device = "homelab/docker";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nas/media" =
+    {
+      device = "homelab/media";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nas/downloads" =
+    {
+      device = "homelab/downloads";
+      fsType = "zfs";
+    };
+
   swapDevices = [ ];
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

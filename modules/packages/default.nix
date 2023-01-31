@@ -10,7 +10,9 @@ in {
       ansible
       asciinema
       bat
+      bc
       curl
+      e2fsprogs
       exa
       ffmpeg
       fzf
@@ -31,7 +33,6 @@ in {
       python3
       ripgrep
       rsync
-      steam
       tree
       unzip
       wget

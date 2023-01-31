@@ -10,6 +10,7 @@
     ./firefox
     ./alacritty
     ./vscode
+    ./obs-studio
 
     # cli
     ./zsh
