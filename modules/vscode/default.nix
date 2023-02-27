@@ -9,16 +9,21 @@ in {
     programs.vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        arrterian.nix-env-selector
-        mkhl.direnv
-        mikestead.dotenv
         antfu.icons-carbon
-        eamodio.gitlens
-        dbaeumer.vscode-eslint
-        redhat.vscode-yaml
-        redhat.vscode-xml
+        arrterian.nix-env-selector
         christian-kohler.path-intellisense
+        dbaeumer.vscode-eslint
+        eamodio.gitlens
+        hashicorp.terraform
+        jnoortheen.nix-ide
+        mikestead.dotenv
+        mkhl.direnv
+        ms-azuretools.vscode-docker
+        ms-kubernetes-tools.vscode-kubernetes-tools
+        ms-vscode.makefile-tools
+        pkief.material-icon-theme
+        redhat.vscode-xml
+        redhat.vscode-yaml
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-theme-onedark";
@@ -27,10 +32,16 @@ in {
           sha256 = "1km3hznw8k0jk9sp3r81c89fxa311lc6gw20fqikd899pvhayqgh";
         }
         {
-          name = "material-icon-theme";
-          publisher = "PKief";
-          version = "4.23.1";
-          sha256 = "16z0c79gqvkdiwpijp5qg9xan2z3nhpw197jqh0g62gskpm95wh5";
+          name = "ansible";
+          publisher = "redhat";
+          version = "1.2.44";
+          sha256 = "0a89c5g70wzwryvv5kmjjvja42wh0gfibna003x8z47a7sqkzxri";
+        }
+        {
+          name = "signageos-vscode-sops";
+          publisher = "signageos";
+          version = "0.7.1";
+          sha256 = "0n4z3s6wkx6dkigiarcrq8vslax045lm53chsilsxrfdq0232g72";
         }
       ];
       userSettings = {

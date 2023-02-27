@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
-  imports = [ ./tailscale.nix ];
+  imports = [ ./zerotier.nix ];
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
